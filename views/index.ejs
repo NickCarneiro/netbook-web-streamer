@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <div class="container">
+    <div class="row">
+        <div class="span8 offset2">
+        <h1>Load a url</h1>
+            <div class="well controls form-inline">
+                <label for="url-input">URL</label>
+                <input type="text" id="url-input" />
+                <button id="submit-btn" class="btn btn-primary">Load</button>
+            </div>
+        </div>
+    </div>
+    </div>
+  </body>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/0.9.16/socket.io.min.js"></script>
+  <script src="javascripts/stream.js"></script>
+</html>
