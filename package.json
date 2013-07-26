@@ -1,0 +1,26 @@
+{
+  "name": "netbook-web-stream",
+  "version": "0.0.0",
+  "description": "Remotely control an iframe to stream music on another pc",
+  "main": "index.js",
+  "dependencies": {
+    "express": "~3.3.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/NickCarneiro/netbook-web-streamer.git"
+  },
+  "keywords": [
+    "audio",
+    "streaming",
+    "netbook"
+  ],
+  "author": "Nick Carneiro",
+  "license": "BSD",
+  "readmeFilename": "README.md",
+  "gitHead": "3e83601dfeb61d0bb7a1980e7255911c49ebcf84"
+}
