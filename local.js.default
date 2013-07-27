@@ -1,0 +1,3 @@
+exports.appHostname = 'localhost'
+exports.httpPort = '3000'
+exports.socketIoPort = '2000'

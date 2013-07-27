@@ -1,5 +1,6 @@
 $(function() {
-    var socket = io.connect('http://localhost:2000');
+    var socketIoUrl = window['socketIoUrl'];
+    var socket = io.connect(socketIoUrl);
     socket.on('audio', function (data) {
         console.log('loading ' + data.url);
         $('#audio-iframe').attr('src', data.url);
