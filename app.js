@@ -4,8 +4,6 @@
  */
 
 var express = require('express')
-  , routes = require('./routes')
-  , user = require('./routes/user')
   , http = require('http')
   , path = require('path');
 
@@ -29,25 +27,35 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-app.get('/', routes.index);
-app.get('/loadUrl', routes.loadUrl);
-app.get('/users', user.list);
-
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
 
 
-
 server.listen(2000);
 
-app.get('/', function (req, res) {
-    res.sendfile(__dirname + '/index.html');
+io.sockets.on('connection', function (socket) {
+    console.log('got a connection');
 });
 
-io.sockets.on('connection', function (socket) {
-    socket.emit('news', { hello: 'world' });
-    socket.on('my other event', function (data) {
-        console.log(data);
-    });
-});
+var routes = {};
+/*
+ * GET home page.
+ */
+routes.index = function(req, res) {
+    res.render('index', { title: 'Netbook Web Stream' });
+};
+
+routes.loadUrl = function(req, res) {
+    io.sockets.emit('audio', {url: req.query['url']});
+    res.set('Content-Type', 'application/javascript');
+    res.send('');
+};
+
+routes.audio = function(req, res) {
+    res.render('audio', {title: 'Play Audio'});
+};
+
+app.get('/', routes.index);
+app.get('/loadUrl', routes.loadUrl);
+app.get('/audio', routes.audio);

@@ -6,3 +6,15 @@ body {
 a {
   color: #00B7FF;
 }
+
+#message-container {
+    height: 100px;
+}
+
+#audio-body {
+    padding: 0px;
+}
+
+#audio-controls {
+    margin: 10px;
+}

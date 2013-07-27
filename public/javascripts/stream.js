@@ -1,11 +1,19 @@
 $(function() {
+    var $message = $('#message');
     $('#submit-btn').on('click', function() {
         var url = $('#url-input').val();
-        $.get('/loadUrl?url=' + url)
-    });
-    var socket = io.connect('http://localhost:2000');
-    socket.on('news', function (data) {
-        console.log(data);
-        socket.emit('my other event', { my: 'data' });
+        $.ajax('/loadUrl?url=' + url, {
+            'method': 'get',
+            'success': function(){
+                $message.show();
+                $message.text('URL sent.');
+                $message.fadeOut(2000);
+            },
+            'error': function() {
+                $message.show();
+                $message.text('Could not send URL.');
+                $message.fadeOut(2000);
+            }
+        });
     });
 });
