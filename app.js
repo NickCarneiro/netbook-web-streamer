@@ -65,13 +65,17 @@ var processUrl = function(url) {
     var processedUrl = url;
     // for youtube links, turn into an embed link and set autoplay=1
     if (url.indexOf('youtube.com') !== -1) {
-        //input like: http://www.youtube.com/watch?v=b9N3tIlEJNc
-        var video_id = url.split('v=')[1];
-        var ampersandPosition = video_id.indexOf('&');
-        if(ampersandPosition != -1) {
-            video_id = video_id.substring(0, ampersandPosition);
+        try {
+            //input like: http://www.youtube.com/watch?v=b9N3tIlEJNc
+            var video_id = url.split('v=')[1];
+            var ampersandPosition = video_id.indexOf('&');
+            if(ampersandPosition != -1) {
+                video_id = video_id.substring(0, ampersandPosition);
+            }
+            processedUrl = 'http://www.youtube.com/embed/' + video_id + '?autoplay=1';
+        } catch(e) {
+            console.log('failed to turn youtube url into embed url');
         }
-        processedUrl = 'http://www.youtube.com/embed/' + video_id + '?autoplay=1';
     }
 
     return processedUrl;

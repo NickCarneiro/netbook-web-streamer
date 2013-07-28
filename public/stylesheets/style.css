@@ -7,8 +7,9 @@ a {
   color: #00B7FF;
 }
 
-#message-container {
-    height: 100px;
+#history {
+    height: 300px;
+    overflow-y: scroll;
 }
 
 #audio-body {
@@ -17,4 +18,8 @@ a {
 
 #audio-controls {
     margin: 10px;
+}
+
+#history li {
+    list-style: none;
 }
